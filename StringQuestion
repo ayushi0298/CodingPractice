@@ -1,0 +1,31 @@
+import java.util.ArrayList;
+
+public class Solution {
+    public static String longestCommonPrefix(ArrayList<String> A) {
+        String temp = A.get(0), common;
+        int l = A.size();
+        for (int i = 1; i < l; i++) {
+            common = "";
+            for (int j = 0; j < Math.min(temp.length(), A.get(i).length()); j++) {
+                if (temp.charAt(j) == A.get(i).charAt(j)) {
+                    //System.out.println("if");
+                    common += temp.charAt(j);
+                    // System.out.println(common);
+                } else
+                    //System.out.println("else");
+                    break;
+            }
+            temp = common;
+        }
+        return temp;
+    }
+
+    public static void main(String args[]) {
+        ArrayList<String> a = new ArrayList<>();
+        a.add("abcefgh");
+        a.add("abcefghuiedhfr");
+        a.add("abcefghgses");
+        String s = longestCommonPrefix(a);
+        System.out.println(s);
+    }
+}
