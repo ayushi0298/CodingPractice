@@ -1,0 +1,33 @@
+public class Array2 {
+    public static int maxSubArray(final int[] A) {
+        int global=A[0],local=A[0],count=0;
+        for(int i=1;i<A.length;i++)
+        {
+            if(local<0)
+            {
+                local=A[i];
+            }
+            else
+            {
+                local= local+ A[i];
+            }
+            global= max(local,global);
+        }
+        return global;
+    }
+
+    private static int max(int local, int global) {
+        if(local< global)
+        {
+            return global;
+        }
+        else{
+            return local;
+        }
+    }
+    public static void main(String args[]){
+        int[] a= new int[]{1,2,3,4,-10};
+        int ans=  maxSubArray(a);
+        System.out.println(ans);
+    }
+}
